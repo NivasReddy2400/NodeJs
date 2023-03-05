@@ -75,49 +75,50 @@
 // emitter.emit("order","medium","mozarella")
 // console.log("third");
 
-const PizzaShop = require("./PizzaShop");
+// const PizzaShop = require("./PizzaShop");
 
-const pizza = new PizzaShop();
+// const pizza = new PizzaShop();
 
-pizza.on("order",(size,topping) => {
-    console.log(`order recived with size:${size} and toppings:${topping}`)
-});
+// pizza.on("order",(size,topping) => {
+//     console.log(`order recived with size:${size} and toppings:${topping}`)
+// });
 
-pizza.order("medium","tomato");
-pizza.display();
+// pizza.order("medium","tomato");
+// pizza.display();
 
+// fs module
 
+// const fs =    require("node:fs");
+// const { connect } = require("node:http2");
 
+// const content = fs.readFileSync("./text.txt","utf-8")
+// console.log(content);
 
+// fs.readFile("./text.txt","utf-8",(error,data) => {
+//     console.log(data)
+// })
+// console.log("third");
 
+// fs.writeFileSync("./text.txt","greetings");
 
+// fs.writeFile("./text.txt","hellooooo from  asssssynchronoussssssssss",{flag:"a+"},(error,data) => {
+//     if(error){
+//         console.log(error);
+//     }
+// })
 
+const fs = require("node:fs")
 
+const readableStream = fs.createReadStream("./text.txt",{
+    encoding:"utf-8",
+    highWaterMark:4
+})
 
+const writeableStream = fs.createWriteStream("./text2.txt")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+readableStream.on("data",(chunk)=>{
+    writeableStream.write(chunk);
+    console.log(chunk);
+})
 
 
