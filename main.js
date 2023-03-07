@@ -107,18 +107,43 @@
 //     }
 // })
 
-const fs = require("node:fs")
+// const fs = require("node:fs")
 
-const readableStream = fs.createReadStream("./text.txt",{
-    encoding:"utf-8",
-    highWaterMark:4
-})
+// const readableStream = fs.createReadStream("./text.txt",{
+//     encoding:"utf-8",
+//     highWaterMark:4
+// })
 
-const writeableStream = fs.createWriteStream("./text2.txt")
+// const writeableStream = fs.createWriteStream("./text2.txt")
 
-readableStream.on("data",(chunk)=>{
-    writeableStream.write(chunk);
-    console.log(chunk);
-})
+// readableStream.on("data",(chunk)=>{
+//     writeableStream.write(chunk);
+//     console.log(chunk);
+// })
 
+
+// const readablestream = fs.createReadStream("./text.txt",{
+//     encoding:"utf-8"
+// })
+
+// const writeableStream = fs.createWriteStream("./text2.txt",)
+
+// readablestream.pipe(writeableStream)
+
+// readablestream.on("data",(chunk)=>{
+//     writeableStream.write(chunk)
+// })
+
+//http module
+
+const http = require("node:http");
+
+const server = http.createServer((req,res)=>{
+    res.writeHead(200,{"content-type":"text/plain"});
+    res.end("helloooo")
+});
+
+server.listen(3000,()=>{
+    console.log("running on 3000");
+});
 
